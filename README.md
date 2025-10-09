@@ -1,5 +1,5 @@
-﻿# HanGirl-Game
-HangGirl - (Originally Hangman) is a guessing game for two or more players. One player thinks of a word, phrase, or sentence and the other(s) tries to guess it by suggesting letters or numbers within a certain number of guesses.
+﻿# HangGirl-Game
+HangGirl - (Originally Hangman) is a word guessing game. Proggram randomlly selects a word, phrase, or sentence and the player tries to guess it by suggesting letters or numbers within a certain number of guesses.
 
 ## Overview
 A word is chosen from a list and is represented by a row of dashes for each letter or number of the word. If the player suggests a letter which occurs in the word, the programm writes it in all its correct positions. If the suggested letter is not present in the word, the programm adds (or alternatively, removes) one element of a hanged stick figure as a tally mark. 
@@ -12,3 +12,4 @@ Some modifications to game play to increase the difficulty level could be implem
 Another alternative is to give the definition of the word.
 
 How many incorrect guesses are allowed in the game can also be modified. This can be done by adding extra elements to the girl figure, like a face or shoes, or by first drawing elements of the gallows for every mistake before starting to draw the girl figure.
+
