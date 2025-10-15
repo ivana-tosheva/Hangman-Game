@@ -28,6 +28,7 @@ while answer not in ("y","yes","n","no"):
             print("Seems blue to me! Lost a point! ")
             if points > 0:
                 points -= 1
+                
         #Question 3        
         answer3 = input("Can birds fly? 'y/n'").lower()
         if answer3 in ("yes", "y"):
