@@ -2,15 +2,27 @@
 Hangman -  is a word guessing game. Proggram randomlly selects a word, phrase, or sentence and the player tries to guess it by suggesting letters or numbers within a certain number of guesses.
 
 ## Overview
-A word is chosen from a list and is represented by a row of dashes for each letter or number of the word. If the player suggests a letter which occurs in the word, the programm writes it in all its correct positions. If the suggested letter is not present in the word, the programm adds (or alternatively, removes) one hanged element as a tally mark. 
-The game ends once the word is guessed, or if all L-E-T-T-E-R-S are hanged, signifying that all guesses have been used.
+A word is chosen from a list and is represented by a row of dashes for each letter or number of the word. If the player suggests a letter which occurs in the word, the programm writes it in all its correct positions. If the suggested letter is not present in the word, the programm adds (or alternatively, removes) one hanged element as game progress counter. 
+The game ends once the word is guessed, or if all parts are hanged, signifying that all guesses have been used.
 
-## Avoiding Controversy
-To avoid controversy where drawing a public execution is inappropriate, alternative methods to keep track of the number of incorrect guesses is used...L-E-T-T-E-R-S...
+## Features
+- Random word selection from a word list  
+- Tracks correct and incorrect guesses  
+- Displays the current word progress  
+- Input validation (only single letters allowed)  
+- Simple text-based interface (console) GUI comes in further steps
 
-Some modifications to game play to increase the difficulty level could be implemented, such as limiting guesses on high-frequency consonants and vowels or double pennalty for wrong guessed high frequency letters. 
-Another alternative is to give the definition of the word.
+## How to Play
 
-How many incorrect guesses are allowed in the game can also be modified. This can be done by adding extra elements to the figure. 
+1. The program picks a random word.
+2. You guess letters one by one.
+3. Each wrong guess adds a piece to the hangman.
+4. The game ends when:
+- You guess the whole word
+- or the hangman is complete
 
+## Technologies Used
 
+1. Python
+2. Git & GitHub for version control
+3. Pygame for GUI
