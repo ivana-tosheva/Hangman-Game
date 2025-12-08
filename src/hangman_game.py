@@ -74,17 +74,17 @@ while guesses_left > 0:
 
     user_input = input("Enter your next letter: ").lower()
 
-
     #Valid input check
     if len(user_input) != 1 or not user_input.isalpha():
         print("Please enter a single letter!")
         continue
 
+    # Repeated guesses check
     if user_input in guessed_letters or user_input in wrong_letters:
         print("You already guessed that letter! ")
         continue
 
-    # Valid guess
+    # If valid guess check and append to coresponding list
     if user_input in word:
         print(f"The letter {user_input} is in the word! ")
         guessed_letters.append(user_input)
