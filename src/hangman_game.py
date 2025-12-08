@@ -74,7 +74,7 @@ while guesses_left > 0:
 
     user_input = input("Enter your next letter: ").lower()
 
-    #Valid input check
+    # Valid input check
     if len(user_input) != 1 or not user_input.isalpha():
         print("Please enter a single letter!")
         continue
