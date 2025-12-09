@@ -55,6 +55,11 @@ chosen_category = input(
     "'F' - food, 'S' - science, 'H' - hobby): "
 ).upper()
 
+# Make sure valid key is entered
+while chosen_category not in categories:
+    print("Invalid category! Please try again")
+    chosen_category = input("Choose again (E/A/S/F/H): ").upper()
+
 word = random.choice(categories[chosen_category])
 
 guessed_letters: list[str] = []
