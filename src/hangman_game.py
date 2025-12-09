@@ -1,14 +1,10 @@
 """Guessing game - Hangman."""
 
-# Hangman word lists by category
-
 import random
 
+
 def load_file_content(filename: str) -> list[str]:
-    """
-    Read a comma-separated word list from a file
-    and return it as a list.
-    """
+    """Read a comma-separated word list from a file and return it as a list."""
     with open(filename) as file:
         content = file.read()
     parts = content.split(", ")
@@ -38,10 +34,7 @@ categories = {
 
 
 def display_word(hidden: str, guessed: list[str]) -> str:
-    """
-    Return secret word with guessed letters shown and
-    others hidden.
-    """
+    """Return secret word with guessed letters shown and others hidden."""
     parts = []
     for letter in hidden:
         if letter in guessed:
@@ -49,6 +42,7 @@ def display_word(hidden: str, guessed: list[str]) -> str:
         else:
             parts.append("_")
     return " ".join(parts)
+
 
 # Choose category
 chosen_category = input(
@@ -101,8 +95,8 @@ while guesses_left > 0:
         guesses_left -= 1
 
     if all(letter in guessed_letters for letter in word):
-            print(f"Congratulations! You guessed the word: {word}")
-            break
+        print(f"Congratulations! You guessed the word: {word}")
+        break
 
     if guesses_left == 0:
         print(HANGMAN_FIGURE[-1])
