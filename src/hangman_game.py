@@ -71,6 +71,7 @@ print("The word you neet to guess is")
 print(display_word(word, guessed_letters))
 print()
 
+HANGMAN_FIGURE = load_file_content("hangman_figure.txt")
 
 # Game loop
 while guesses_left > 0:
@@ -104,7 +105,10 @@ while guesses_left > 0:
             break
 
     if guesses_left == 0:
+        print(HANGMAN_FIGURE[-1])
         print(f"You lose! The word is: {word}")
         break
+
+    print(HANGMAN_FIGURE[len(wrong_letters)])
     print(display_word(word, guessed_letters))
     print()
