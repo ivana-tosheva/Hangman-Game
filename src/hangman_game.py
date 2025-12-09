@@ -4,30 +4,28 @@
 
 import random
 
-emotions = [
-    "happy", "sad", "angry", "excited", "bored",
-    "nervous", "surprised", "lonely", "confused", "proud"
-]
+def load_file_content(filename: str) -> list[str]:
+    """
+    Read a comma-separated word list from a file
+    and return it as a list.
+    """
+    with open(filename) as file:
+        content = file.read()
+    parts = content.split(", ")
+    return parts
 
-animals = [
-    "elephant", "giraffe", "kangaroo", "dolphin", "penguin",
-    "alligator", "tiger", "lion", "zebra", "rabbit"
-]
 
-food = [
-    "pizza", "burger", "pasta", "sushi", "salad",
-    "sandwich", "taco", "steak", "noodles", "pancakes"
-]
+# Load hangman category files
+emotions = load_file_content("emotions.txt")
 
-science = [
-    "gravity", "atom", "electron", "photosynthesis", "evolution",
-    "neutron", "planet", "molecule", "cell", "enzyme"
-]
+animals = load_file_content("animals.txt")
 
-hobby = [
-    "soccer", "basketball", "tennis", "cricket", "swimming",
-    "hockey", "volleyball", "baseball", "rugby", "cycling"
-]
+food = load_file_content("food.txt")
+
+science = load_file_content("science.txt")
+
+hobby = load_file_content("hobby.txt")
+
 
 # Combine into a dictionary for easy access
 categories = {
@@ -40,7 +38,10 @@ categories = {
 
 
 def display_word(hidden: str, guessed: list[str]) -> str:
-    """Return secret word with guessed letters shown and others hidden."""
+    """
+    Return secret word with guessed letters shown and
+    others hidden.
+    """
     parts = []
     for letter in hidden:
         if letter in guessed:
@@ -57,7 +58,7 @@ chosen_category = input(
 
 # Make sure valid key is entered
 while chosen_category not in categories:
-    print("Invalid category! Please try again")
+    print("Invalid category! Please try again!")
     chosen_category = input("Choose again (E/A/S/F/H): ").upper()
 
 word = random.choice(categories[chosen_category])
