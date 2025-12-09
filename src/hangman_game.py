@@ -93,6 +93,12 @@ while guesses_left > 0:
         wrong_letters.append(user_input)
         guesses_left -= 1
 
+    if all(letter in guessed_letters for letter in word):
+            print(f"Congratulations! You guessed the word: {word}")
+            break
 
+    if guesses_left == 0:
+        print(f"You lose! The word is: {word}")
+        break
     print(display_word(word, guessed_letters))
     print()
