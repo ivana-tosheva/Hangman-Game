@@ -35,7 +35,12 @@ GOLD = (222, 184, 135)
 WOOD_BROWN = (139, 69, 19)
 LIGHT_BROWN = (180, 120, 60)
 GRAY = (122,84,35)
+BLACK =(0, 0, 0)
 
+GALLOWS_X, GALLOWS_Y = gallows_position
+# Hang point
+HANG_X = GALLOWS_X + 124
+HANG_Y = GALLOWS_Y + 110
 
 def load_file_content(filename: str) -> list[str]:
     with open(filename) as file:
@@ -118,6 +123,21 @@ def handle_button_click(mouse_pos, buttons):
             return button["letter"]     # can be used for Hangman logic
     return None
 
+
+def draw_hangman(screen, mistakes):
+    if mistakes > 0:  # head
+        pygame.draw.circle(screen, BLACK, (HANG_X, HANG_Y ), 30, 4)
+    if mistakes > 1:  # body
+        pygame.draw.line(screen, BLACK, (HANG_X, HANG_Y + 30), (HANG_X, HANG_Y + 100), 4)
+    if mistakes > 2:  # right arm
+        pygame.draw.line(screen, BLACK, (HANG_X, HANG_Y + 50), (HANG_X + 30, HANG_Y + 70), 5)
+    if mistakes > 3:  # left arm
+        pygame.draw.line(screen, BLACK, (HANG_X, HANG_Y + 50), (HANG_X - 30, HANG_Y + 70), 5)
+    if mistakes > 4:  # right leg
+        pygame.draw.line(screen, BLACK, (HANG_X, HANG_Y + 100), (HANG_X + 30, HANG_Y + 130), 5)
+    if mistakes > 5:  # left leg
+        pygame.draw.line(screen, BLACK, (HANG_X, HANG_Y +100), (HANG_X - 30, HANG_Y + 130), 5)
+
 #SETUP
 alphabet_buttons = create_letter_buttons(70, 435)
 running = True
@@ -153,6 +173,7 @@ while running:
     # Draw background
     screen.blit(background, (0,0))
     screen.blit(gallows, gallows_position)
+    draw_hangman(screen, len(wrong_letters))
     #Draw word
     draw_word(screen, word, guessed_letters)
     # Draw letter buttons
