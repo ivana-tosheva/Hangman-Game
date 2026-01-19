@@ -104,8 +104,8 @@ def draw_letter_buttons(screen, buttons):
             bg_color = LIGHT_BROWN
             border_color = GRAY
             letter_color = GRAY
-            
-        
+
+
         # Draw button background
         pygame.draw.rect(screen, bg_color, button["rect"], border_radius=6)
         # Draw button border
@@ -138,6 +138,17 @@ def draw_hangman(screen, mistakes):
     if mistakes > 5:  # left leg
         pygame.draw.line(screen, BLACK, (HANG_X, HANG_Y +100), (HANG_X - 30, HANG_Y + 130), 5)
 
+
+def draw_result(screen, win, word):
+    if win:
+        text = FONT.render("YOU WIN!", True, GOLD)
+    else:
+        text = FONT.render(f"YOU LOSE! Word was: {word}", True, GOLD)
+
+    rect = text.get_rect(center=(WIDTH // 2, 260))
+    screen.blit(text, rect)
+
+
 #SETUP
 alphabet_buttons = create_letter_buttons(70, 435)
 running = True
@@ -149,7 +160,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONDOWN and not game_over:
             mouse_pos = pygame.mouse.get_pos()
             letter = handle_button_click(mouse_pos, alphabet_buttons)
             
@@ -176,6 +187,11 @@ while running:
     draw_hangman(screen, len(wrong_letters))
     #Draw word
     draw_word(screen, word, guessed_letters)
+
+    #Draw win/lose message
+    if game_over:
+        draw_result(screen, win, word)
+
     # Draw letter buttons
     draw_letter_buttons(screen, alphabet_buttons)
 
